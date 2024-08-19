@@ -25,7 +25,8 @@ class ProjectTests(APITestCase):
         # Create a project
         self.project = Project.objects.create(
             name="Test Project",
-            description="Description for Test Project"
+            description="Description for Test Project",
+            owner=self.user
         )
 
     def test_create_project(self):
@@ -67,7 +68,8 @@ class TaskTests(APITestCase):
 
         self.project = Project.objects.create(
             name="Test Project",
-            description="Description for Test Project"
+            description="Description for Test Project",
+            owner=self.user
         )
 
     def test_create_task(self):
@@ -92,7 +94,7 @@ class TaskTests(APITestCase):
             deadline="2024-08-20"
         )
 
-        url = reverse('task-list', args=[self.project.id])
+        url = f'{reverse("task-list", args=[self.project.id])}?status=new'
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)
@@ -146,7 +148,8 @@ class OverdueTaskReportTests(APITestCase):
 
         self.project = Project.objects.create(
             name="Test Project",
-            description="Description for Test Project"
+            description="Description for Test Project",
+            owner=self.user
         )
 
     @patch('projects.utils.notifications.send_telegram_message')
