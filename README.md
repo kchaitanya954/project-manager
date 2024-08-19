@@ -20,7 +20,7 @@ This project provides a REST API for managing projects and tasks. It includes fu
 ## Requirements
 
 - Python 3.10 or later
-- Django 4.x
+- Django 5.x
 - Django REST Framework 3.x
 - PostgreSQL
 - Requests library (for sending notifications)
