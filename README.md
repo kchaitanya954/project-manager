@@ -38,7 +38,7 @@ cd project-manager/project_manager
 ### Create a Virtual Environment
 ```bash
 python -m venv venv
-source venv/bin/activate `
+source venv/bin/activate ` # On Windows use `venv\Scripts\activate`
 ```
 ### Install Dependencies
 ```bash
